@@ -13,14 +13,14 @@ overriding the default behavior.
 To use the plugin, add **openseadragon-viewerinputhook.js** after **openseadragon.js** to your site.
 This adds the **ViewerInputHook** class to the OpenSeadragon namespace.
 
-An **ViewerInputHook** object can be created and attached to an [OpenSeadragon.Viewer](http://openseadragon.github.io/docs/symbols/OpenSeadragon.Viewer.html) two ways:
+A **ViewerInputHook** object can be created and attached to an [OpenSeadragon.Viewer](http://openseadragon.github.io/docs/symbols/OpenSeadragon.Viewer.html) two ways:
 
 
 1. Call the addViewerInputHook method on the viewer
 2. Create a new ViewerInputHook object, passing a viewer reference in the options parameter
 
 Both methods return a new ViewerInputHook object (although there's currently no public properties or methods available), and
-both methods take an options parameter where the event handlers to be hooked may be specified (see example code in the 'Details' section below).
+both methods take an options parameter where the event handlers to be hooked may be specified (see the 'Details' section below).
 
 ```javascript
     // Example 1 - Use the Viewer.addViewerInputHook() method to create a ViewerInputHook
@@ -37,6 +37,8 @@ both methods take an options parameter where the event handlers to be hooked may
 ```
 
 ###Details
+
+Event handler methods are specified in the options object passed when creating a ViewerInputHook object (see example code below).
 
 All event handler methods have the following signature:
 
