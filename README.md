@@ -106,3 +106,7 @@ All the sample code is in [scripts/viewmodel.js](http://msalsbery.github.io/open
 ###Notes
 
 ###In the works...
+
+
+1. Provide hooks on reference strip events
+2. Provide hooks on navigator events
