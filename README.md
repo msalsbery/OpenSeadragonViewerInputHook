@@ -99,9 +99,10 @@ Your hook event handler methods can control the event handling behavior in two w
 
 ###Demo/Test Site
 
-The [OpenSeadragonImagingHelper plugin demo/test site](https://github.com/msalsbery/OpenSeadragonImagingHelper) shows an example using OpenSeadragonViewerInputHook.
+The [OpenSeadragonImagingHelper plugin demo/test site](https://github.com/msalsbery/OpenSeadragonImagingHelper) uses 
+OpenSeadragonViewerInputHook to monitor cursor position and provide custom click and mousewheel event actions.
 
-All the sample code is in [scripts/viewmodel.js](http://msalsbery.github.io/openseadragonimaginghelper/scripts/viewmodel.js).  
+The sample code is in [scripts/viewmodel.js](http://msalsbery.github.io/openseadragonimaginghelper/scripts/viewmodel.js).  
 
 ###Notes
 
