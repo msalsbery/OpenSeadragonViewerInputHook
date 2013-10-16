@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="Gruntfile.js" />
     <Content Include="scripts\openseadragon-viewerinputhook.js" />
   </ItemGroup>
   <ItemGroup>
@@ -40,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
+    <None Include=".jshintrc" />
     <None Include="LICENSE" />
+    <None Include="package.json" />
     <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
