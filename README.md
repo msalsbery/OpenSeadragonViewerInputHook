@@ -1,16 +1,16 @@
 ##OpenSeadragonViewerInputHook
 
-[See the Demo/Test Site Live Here](http://msalsbery.github.io/openseadragonimaginghelper/index.html)
-
 OpenSeadragonViewerInputHook is a plugin for [OpenSeadragon](https://github.com/openseadragon/openseadragon) 1.0.0+
 which provides hooks into the user input event pipeline for providing additional behavior and/or
 overriding the default behavior.
+
+[See the Demo/Test Site Live Here](http://msalsbery.github.io/openseadragonimaginghelper/index.html)
 
 ###Usage
 
 [Download openseadragon-viewerinputhook.min.js Here](http://msalsbery.github.io/openseadragonimaginghelper/scripts/openseadragon-viewerinputhook.min.js)
 
-To use the plugin, add **openseadragon-viewerinputhook.js** after **openseadragon.min.js** to your site.
+To use the plugin, add **openseadragon-viewerinputhook.min.js** after **openseadragon.min.js** to your site.
 This adds the **ViewerInputHook** class to the OpenSeadragon namespace.
 
 A **ViewerInputHook** object can be created and attached to an [OpenSeadragon.Viewer](http://openseadragon.github.io/docs/symbols/OpenSeadragon.Viewer.html) two ways:
