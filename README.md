@@ -8,7 +8,7 @@ overriding the default behavior.
 
 ###Usage
 
-[Download openseadragon-viewerinputhook.min.js Here](http://msalsbery.github.io/openseadragonimaginghelper/scripts/openseadragon-viewerinputhook.min.js)
+Get the built source from the 'build' folder here (or [download here](http://msalsbery.github.io/openseadragonimaginghelper/scripts/openseadragon-viewerinputhook.min.js))
 
 To use the plugin, add **openseadragon-viewerinputhook.min.js** after **openseadragon.min.js** to your site.
 This adds the **ViewerInputHook** class to the OpenSeadragon namespace.
@@ -63,11 +63,12 @@ The ViewerInputHook class inserts your event hook handler methods in front of an
 so the attached handler will be called first. Additional ViewerInputHook objects can be added on the same viewer to create a chain of hook methods, 
 where the last added handler(s) will be called first.
 
-Your hook event handler methods can control the event handling behavior in two ways:
+Your hook event handler methods can control the event handling behavior in one or more of the following ways:
 
 
 1. Set event.stopHandlers = true to prevent any more handlers in the event handler chain from being called
 2. Set event.stopBubbling = true to prevent the original DOM event from bubbling up the DOM tree (all handlers returning false will also disable bubbling)
+3. Set event.preventDefaultAction = true to prevent the viewer's default action in response to the event (currently applies to clickHandler, dragHandler, and scrollHandler)
 
 ```javascript
     // Example
@@ -79,10 +80,11 @@ Your hook event handler methods can control the event handling behavior in two w
     function onOSDCanvasScroll(event) {
         // set event.stopHandlers = true to prevent any more handlers in the chain from being called
         // set event.stopBubbling = true to prevent the original event from bubbling
+        // set event.preventDefaultAction = true to prevent viewer's default action
 
         // Disable mousewheel zoom on the viewer and let the original mousewheel events bubble
         if (!event.isTouchEvent) {
-            event.stopHandlers = true;
+            event.preventDefaultAction = true;
             return true;
         }
     }
@@ -90,9 +92,10 @@ Your hook event handler methods can control the event handling behavior in two w
     function onOSDCanvasClick(event) {
         // set event.stopHandlers = true to prevent any more handlers in the chain from being called
         // set event.stopBubbling = true to prevent the original event from bubbling
+        // set event.preventDefaultAction = true to prevent viewer's default action
 
-        // Disable click zoom on the viewer by simply not letting the default handler get called
-        event.stopHandlers = true;
+        // Disable click zoom on the viewer using event.preventDefaultAction
+        event.preventDefaultAction = true;
         event.stopBubbling = true;
     }
 ```
@@ -111,3 +114,4 @@ The sample code is in [scripts/viewmodel.js](http://msalsbery.github.io/opensead
 
 1. Provide hooks on reference strip events
 2. Provide hooks on navigator events
+3. Refactor redundant code
