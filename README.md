@@ -8,7 +8,7 @@ overriding the default behavior.
 
 ###Usage
 
-Get the built source from the 'build' folder here (or [download here](http://msalsbery.github.io/openseadragonimaginghelper/scripts/openseadragon-viewerinputhook.min.js))
+Get the built source from the ['build' folder](https://github.com/msalsbery/OpenSeadragonViewerInputHook/tree/master/build) here (or [download here](http://msalsbery.github.io/openseadragonimaginghelper/scripts/openseadragon-viewerinputhook.min.js))
 
 To use the plugin, add **openseadragon-viewerinputhook.min.js** after **openseadragon.min.js** to your site.
 This adds the **ViewerInputHook** class to the OpenSeadragon namespace.
