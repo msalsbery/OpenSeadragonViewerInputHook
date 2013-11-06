@@ -13,6 +13,7 @@
         srcDir = 'src/',
         buildDir = 'build/',
         docsDir = 'docs/',
+        demoScriptsDir = '../OpenSeadragonImagingHelper/demo/scripts/',
         src = srcDir + srcName,
         minified = buildDir + minifiedName;
 
@@ -75,6 +76,12 @@
     // Copies un-minified source to build folder
     grunt.registerTask("copy:debugbuild", function() {
         grunt.file.copy(src, buildDir + srcName);
+    });
+
+    // Copies built source to demo site folder
+    grunt.registerTask('publish', function() {
+        grunt.file.copy(buildDir + srcName, demoScriptsDir + srcName);
+        grunt.file.copy(minified, demoScriptsDir + minifiedName);
     });
 
     // Build task(s).
