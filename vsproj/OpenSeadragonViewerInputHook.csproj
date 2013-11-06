@@ -61,8 +61,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\src\openseadragon-viewerinputhook.js">
-      <Link>src\openseadragon-viewerinputhook.js</Link>
+    <Content Include="..\src\viewerinputhook.js">
+      <Link>src\viewerinputhook.js</Link>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
