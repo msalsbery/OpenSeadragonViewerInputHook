@@ -1,8 +1,10 @@
 ﻿module.exports = function(grunt) {
 
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks("grunt-git-describe");
     grunt.loadNpmTasks('grunt-jsdoc');
 
     var packageJson = grunt.file.readJSON("package.json"),
@@ -16,6 +18,13 @@
 
     grunt.initConfig({
         pkg: packageJson,
+        "git-describe": {
+            build: {
+                options: {
+                    prop: "gitInfo"
+                }
+            }
+        },
         clean: {
             build: {
                 src: [buildDir]
@@ -33,12 +42,23 @@
         uglify: {
             options: {
                 preserveComments: 'some',
-                banner: '//! <%= pkg.name %> ' + packageJson.version + ' <%= grunt.template.today("yyyy-mm-dd") %>\n'
+                banner: '//! <%= pkg.name %> <%= pkg.version %>\n'
+                      + '//! Build date: <%= grunt.template.today("yyyy-mm-dd") %>\n'
+                      + '//! Git commit: <%= gitInfo %>\n'
+                      + '//! https://github.com/msalsbery/OpenSeadragonViewerInputHook\n'
+                      //+ '//! License: http://msalsbery.github.io/openseadragonannohost/index.html\n\n',
             },
             build: {
                 src: src,
                 dest: minified
             }
+        },
+        watch: {
+            files: ['Gruntfile.js', srcDir + '*.js'],
+            tasks: ['build']
+            //options: {
+            //    event: ['added', 'deleted'], //'all', 'changed', 'added', 'deleted'
+            //}
         },
         jsdoc : {
             dist : {
@@ -58,7 +78,7 @@
     });
 
     // Build task(s).
-    grunt.registerTask('build', ['clean:build', 'jshint', 'uglify', 'copy:debugbuild']);
+    grunt.registerTask('build', ['clean:build', 'git-describe', 'jshint', 'uglify', 'copy:debugbuild']);
 
     // Documentation task(s).
     grunt.registerTask('doc', ['clean:doc', 'jsdoc']);
