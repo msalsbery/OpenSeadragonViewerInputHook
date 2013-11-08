@@ -44,20 +44,20 @@ All event handler methods have the following signature:
 
     handlerFunc(event)
 
-The following viewer event handlers can be hooked:
+Any of the following event handler methods can be specified in the ViewerInputHook creation options:
 
 
-1. enterHandler
-2. exitHandler
-3. pressHandler
-4. releaseHandler
-5. moveHandler
-6. scrollHandler
-7. clickHandler
-8. dragHandler
-9. keyHandler
-10. focusHandler
-11. blurHandler
+1. onViewerEnter
+2. onViewerExit
+3. onViewerPress
+4. onViewerRelease
+5. onViewerMove
+6. onViewerScroll
+7. onViewerClick
+8. onViewerDrag
+9. onViewerKey
+10. onViewerFocus
+11. onViewerBlur
 
 The ViewerInputHook class inserts your event hook handler methods in front of any existing event handler methods
 so the attached handler will be called first. Additional ViewerInputHook objects can be added on the same viewer to create a chain of hook methods, 
@@ -74,30 +74,21 @@ Your hook event handler methods can control the event handling behavior in one o
     // Example
 
     var viewer = OpenSeadragon({...});
-    var viewerInputHook = viewer.addViewerInputHook({scrollHandler: onOSDCanvasScroll,
-                                                     clickHandler: onOSDCanvasClick});
 
-    function onOSDCanvasScroll(event) {
-        // set event.stopHandlers = true to prevent any more handlers in the chain from being called
-        // set event.stopBubbling = true to prevent the original event from bubbling
-        // set event.preventDefaultAction = true to prevent viewer's default action
-
-        // Disable mousewheel zoom on the viewer and let the original mousewheel events bubble
-        if (!event.isTouchEvent) {
+    viewer.addViewerInputHook({
+        onViewerScroll: function (event) {
+            // Disable mousewheel zoom on the viewer and let the original mousewheel events bubble
+            if (!event.isTouchEvent) {
+                event.preventDefaultAction = true;
+                return true;
+            }
+        },
+        onViewerClick: function (event) {
+            // Disable click zoom on the viewer using event.preventDefaultAction
             event.preventDefaultAction = true;
-            return true;
+            event.stopBubbling = true;
         }
-    }
-
-    function onOSDCanvasClick(event) {
-        // set event.stopHandlers = true to prevent any more handlers in the chain from being called
-        // set event.stopBubbling = true to prevent the original event from bubbling
-        // set event.preventDefaultAction = true to prevent viewer's default action
-
-        // Disable click zoom on the viewer using event.preventDefaultAction
-        event.preventDefaultAction = true;
-        event.stopBubbling = true;
-    }
+    });
 ```
 
 ###Demo/Test Site
