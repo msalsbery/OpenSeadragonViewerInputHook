@@ -13,11 +13,11 @@ Download [openseadragon-viewerinputhook.min.js](http://msalsbery.github.io/opens
 To use the plugin, add **openseadragon-viewerinputhook.min.js** after **openseadragon.min.js** to your site.
 This adds the **ViewerInputHook** class to the OpenSeadragon namespace.
 
-A **ViewerInputHook** object can be created and attached to an [OpenSeadragon.Viewer](http://openseadragon.github.io/docs/symbols/OpenSeadragon.Viewer.html) two ways:
+A **ViewerInputHook** object can be created and attached (if desired) to an [OpenSeadragon.Viewer](http://openseadragon.github.io/docs/symbols/OpenSeadragon.Viewer.html) two ways:
 
 
 1. Call the addViewerInputHook method on the viewer
-2. Create a new ViewerInputHook object, passing a viewer reference in the options parameter
+2. Create a new ViewerInputHook object, passing a viewer reference in the options parameter (optional)
 
 Both methods return a new ViewerInputHook object (although there's currently no public properties or methods available), and
 both methods take an options parameter where the event handlers to be hooked may be specified (see the 'Details' section below).
@@ -28,39 +28,47 @@ both methods take an options parameter where the event handlers to be hooked may
     // create an OpenSeadragon viewer
     var viewer = OpenSeadragon({...});
     // add a ViewerInputHook to the viewer
-    var viewerInputHook = viewer.addViewerInputHook({...});
+    var viewerInputHook = viewer.addViewerInputHook({ hooks: [...] });
 
 
     // Example 2 - Attach a new ViewerInputHook to an existing OpenSeadragon.Viewer
 
-    var viewerInputHook = new OpenSeadragon.ViewerInputHook({viewer: existingviewer, ...});
+    var viewerInputHook = new OpenSeadragon.ViewerInputHook({ viewer: existingviewer, hooks: [...] });
 ```
 
 ###Details
 
-Event handler methods are specified in the options object passed when creating a ViewerInputHook object (see example code below).
+Event handler callbacks are specified in the hooks property (array) of the options object passed when creating a ViewerInputHook object (see example code below).
+Any number of hooks can be specified.
 
-All event handler methods have the following signature:
+Each hook specification in the array should have three properties - tracker, handler, and hookHandler.
+
+The tracker property of each hook definition can be a reference to any [OpenSeadragon.MouseTracker](http://openseadragon.github.io/docs/symbols/OpenSeadragon.MouseTracker.html) instance, 
+or one of the pre-defined OpenSeadragon viewer trackers - currently 'viewer' or 'viewer_outer'.
+
+The handler property of each hook definition specifies which MouseTracker handler to hook.
+Valid values are:
+
+
+1. 'enterHandler'
+2. 'exitHandler'
+3. 'pressHandler'
+4. 'releaseHandler'
+5. 'moveHandler'
+6. 'stopHandler'
+7. 'scrollHandler'
+8. 'clickHandler'
+9. 'dragHandler'
+10. 'keyHandler'
+11. 'focusHandler'
+12. 'blurHandler'
+
+The hookHandler property of each hook definition should be the user-defined event handler callback.  All event handler callbacks have the following signature:
 
     handlerFunc(event)
 
-Any of the following event handler methods can be specified in the ViewerInputHook creation options:
-
-
-1. onViewerEnter
-2. onViewerExit
-3. onViewerPress
-4. onViewerRelease
-5. onViewerMove
-6. onViewerScroll
-7. onViewerClick
-8. onViewerDrag
-9. onViewerKey
-10. onViewerFocus
-11. onViewerBlur
-
 The ViewerInputHook class inserts your event hook handler methods in front of any existing event handler methods
-so the attached handler will be called first. Additional ViewerInputHook objects can be added on the same viewer to create a chain of hook methods, 
+so the attached handler will be called first. Additional ViewerInputHook objects can be added on the same viewer/MouseTracker to create a chain of hook methods, 
 where the last added handler(s) will be called first.
 
 Your hook event handler methods can control the event handling behavior in one or more of the following ways:
@@ -68,27 +76,31 @@ Your hook event handler methods can control the event handling behavior in one o
 
 1. Set event.stopHandlers = true to prevent any more handlers in the event handler chain from being called
 2. Set event.stopBubbling = true to prevent the original DOM event from bubbling up the DOM tree (all handlers returning false will also disable bubbling)
-3. Set event.preventDefaultAction = true to prevent the viewer's default action in response to the event (currently applies to clickHandler, dragHandler, and scrollHandler)
+3. Set event.preventDefaultAction = true to prevent the viewer's default action in response to the event (currently applies to clickHandler, dragHandler, and scrollHandler on the viewer (tracker = 'viewer'))
 
 ```javascript
     // Example
 
     var viewer = OpenSeadragon({...});
 
-    viewer.addViewerInputHook({
-        onViewerScroll: function (event) {
-            // Disable mousewheel zoom on the viewer and let the original mousewheel events bubble
-            if (!event.isTouchEvent) {
-                event.preventDefaultAction = true;
-                return true;
-            }
-        },
-        onViewerClick: function (event) {
-            // Disable click zoom on the viewer using event.preventDefaultAction
+    viewerInputHook = viewer.addViewerInputHook({hooks: [
+        {tracker: 'viewer', handler: 'scrollHandler', hookHandler: onViewerScroll},
+        {tracker: 'viewer', handler: 'clickHandler', hookHandler: onViewerClick}
+    ]});
+
+    function onViewerScroll(event) {
+        // Disable mousewheel zoom on the viewer and let the original mousewheel events bubble
+        if (!event.isTouchEvent) {
             event.preventDefaultAction = true;
-            event.stopBubbling = true;
+            return true;
         }
-    });
+    }
+
+    function onViewerClick(event) {
+        // Disable click zoom on the viewer using event.preventDefaultAction
+        event.preventDefaultAction = true;
+        event.stopBubbling = true;
+    }
 ```
 
 ###Demo/Test Site
@@ -100,9 +112,9 @@ The sample code is in [scripts/viewmodel.js](http://msalsbery.github.io/opensead
 
 ###Notes
 
-###In the works...
+###TODO...
 
 
-1. Provide hooks on reference strip events
-2. Provide hooks on navigator events
-3. Refactor redundant code
+1. jsdoc documentation
+2. Provide hooks on reference strip events
+3. Provide hooks on navigator events
