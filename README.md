@@ -4,7 +4,7 @@ OpenSeadragonViewerInputHook is a plugin for [OpenSeadragon](https://github.com/
 which provides hooks into the user input event pipeline for providing additional behavior and/or
 overriding the default behavior.
 
-[See the Demo/Test Site Live Here](http://msalsbery.github.io/openseadragonimaginghelper/index.html)
+[See the Demo/Test Site Live](http://msalsbery.github.io/openseadragonimaginghelper/index.html)
 
 ###Usage
 
