@@ -23,7 +23,15 @@
  * @author Mark Salsbery <msalsbery@hotmail.com>
  */
 
+/**
+ * @namespace OpenSeadragon
+ * @extends external:OpenSeadragon
+ */
 (function($) {
+
+    if (!$.version || $.version.major < 1) {
+        throw new Error('OpenSeadragonViewerInputHook requires OpenSeadragon version 1.0.0+');
+    }
 
     $.Viewer.prototype.addViewerInputHook = function(options) {
         options = options || {};
@@ -53,9 +61,9 @@
         }
 
         for (curHook = 0; curHook < options.hooks.length; curHook++) {
-            if (typeof options.hooks[curHook].tracker === "string") {
+            if (typeof options.hooks[curHook].tracker === 'string') {
                 if (!options.viewer) {
-                    throw new Error("A viewer must be specified.");
+                    throw new Error('A viewer must be specified.');
                 }
                 curTracker = this.viewerTrackers[options.hooks[curHook].tracker];
                 if (curTracker === undefined) {
@@ -75,6 +83,25 @@
             /*jshint loopfunc:false*/
         }
     };
+
+
+    /**
+     * ViewerInputHook version.
+     * @member {Object} OpenSeadragon.ViewerInputHook.version
+     * @property {String} versionStr - The version number as a string ('major.minor.revision').
+     * @property {Number} major - The major version number.
+     * @property {Number} minor - The minor version number.
+     * @property {Number} revision - The revision number.
+     */
+    /* jshint ignore:start */
+    $.ViewerInputHook.version = {
+        versionStr: '<%= viewerinputhookVersion.versionStr %>',
+        major: <%= viewerinputhookVersion.major %>,
+        minor: <%= viewerinputhookVersion.minor %>,
+        revision: <%= viewerinputhookVersion.revision %>
+    };
+    /* jshint ignore:end */
+
 
     $.ViewerInputHook.prototype.callHandlers = function (hookHandler, origHandler, event) {
         var ret = hookHandler(event);
