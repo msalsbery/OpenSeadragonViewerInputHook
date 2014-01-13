@@ -9,14 +9,16 @@
     grunt.loadNpmTasks('grunt-jsdoc');
 
     var packageJson = grunt.file.readJSON("package.json"),
+        docsGlobals = '../OpenSeadragonImaging/docs/docs-globals.js',
         distributionName = 'openseadragon-viewerinputhook.js',
         minifiedName = 'openseadragon-viewerinputhook.min.js',
         srcDir = 'src/',
         buildDir = 'build/',
-        docsDir = 'docs/',
+        builtDir = buildDir + 'openseadragonviewerinputhook/',
+        docsDir = buildDir + 'docs/',
         publishDir = '../msalsbery.github.io/builds/',
-        distribution = buildDir + distributionName,
-        minified = buildDir + minifiedName,
+        distribution = builtDir + distributionName,
+        minified = builtDir + minifiedName,
         sources = [
             srcDir + 'viewerinputhook.js'
         ];
@@ -38,7 +40,7 @@
         },
         clean: {
             build: {
-                src: [buildDir]
+                src: [builtDir]
             },
             doc: {
                 src: [docsDir]
@@ -83,9 +85,9 @@
         },
         jsdoc : {
             dist : {
-                src: [distribution, 'README.md'], 
+                src: [docsGlobals, distribution],//, 'README.md'
                 options: {
-                    destination: 'docs',
+                    destination: docsDir,
                     //template: "node_modules/docstrap/template",
                     configure: 'doc-conf.json'
                 }
