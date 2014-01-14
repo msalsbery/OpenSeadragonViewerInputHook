@@ -8,12 +8,12 @@ overriding the default behavior.
 
 ###Usage
 
-Download [openseadragon-viewerinputhook.min.js](http://msalsbery.github.io/builds/openseadragon-viewerinputhook.min.js) (or the un-minified [openseadragon-viewerinputhook.js](http://msalsbery.github.io/builds/openseadragon-viewerinputhook.js))
+Download [openseadragon-viewerinputhook.min.js](http://msalsbery.github.io/builds/openseadragonimaging/openseadragon-viewerinputhook.min.js) (or the un-minified [openseadragon-viewerinputhook.js](http://msalsbery.github.io/builds/openseadragonimaging/openseadragon-viewerinputhook.js))
 
 To use the plugin, add **openseadragon-viewerinputhook.min.js** after **openseadragon.min.js** to your site.
 This adds the **ViewerInputHook** class to the OpenSeadragon namespace.
 
-A **ViewerInputHook** object can be created and attached (if desired) to an [OpenSeadragon.Viewer](http://openseadragon.github.io/docs/symbols/OpenSeadragon.Viewer.html) two ways:
+A **ViewerInputHook** object can be created and attached (if desired) to an [OpenSeadragon.Viewer](http://openseadragon.github.io/docs/OpenSeadragon.Viewer.html) two ways:
 
 
 1. Call the addViewerInputHook method on the viewer
@@ -43,7 +43,7 @@ Any number of hooks can be specified.
 
 Each hook specification in the array should have three properties - tracker, handler, and hookHandler.
 
-The tracker property of each hook definition can be a reference to any [OpenSeadragon.MouseTracker](http://openseadragon.github.io/docs/symbols/OpenSeadragon.MouseTracker.html) instance, 
+The tracker property of each hook definition can be a reference to any [OpenSeadragon.MouseTracker](http://openseadragon.github.io/docs/OpenSeadragon.MouseTracker.html) instance, 
 or one of the pre-defined OpenSeadragon viewer trackers - currently 'viewer' or 'viewer_outer'.
 
 The handler property of each hook definition specifies which MouseTracker handler to hook.
