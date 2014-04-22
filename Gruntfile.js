@@ -101,6 +101,9 @@
         grunt.file.copy(minified, publishDir + minifiedName);
     });
 
+    // Clean task(s).
+    grunt.registerTask('clean-build', ['clean:build']);
+
     // Build task(s).
     grunt.registerTask('build', ['clean:build', 'jshint:beforeconcat', 'git-describe', 'concat', 'jshint:afterconcat', 'uglify']);
 

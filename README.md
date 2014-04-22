@@ -57,10 +57,12 @@ Valid values are:
 6. 'stopHandler'
 7. 'scrollHandler'
 8. 'clickHandler'
-9. 'dragHandler'
-10. 'keyHandler'
-11. 'focusHandler'
-12. 'blurHandler'
+9. 'dblClickHandler'
+10. 'dragHandler'
+11. 'dragEndHandler'
+12. 'keyHandler'
+13. 'focusHandler'
+14. 'blurHandler'
 
 The hookHandler property of each hook definition should be the user-defined event handler callback.  All event handler callbacks have the following signature:
 
