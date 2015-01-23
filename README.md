@@ -90,7 +90,7 @@ Your hook event handler methods can control the event handling behavior in one o
 
     var viewer = OpenSeadragon({...});
 
-    viewerInputHook = viewer.addViewerInputHook({hooks: [
+    viewer.addViewerInputHook({hooks: [
         {tracker: 'viewer', handler: 'scrollHandler', hookHandler: onViewerScroll},
         {tracker: 'viewer', handler: 'clickHandler', hookHandler: onViewerClick}
     ]});
