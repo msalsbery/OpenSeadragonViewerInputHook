@@ -53,17 +53,22 @@ Valid values are:
 1. 'enterHandler'
 2. 'exitHandler'
 3. 'pressHandler'
-4. 'releaseHandler'
-5. 'moveHandler'
-6. 'stopHandler'
-7. 'scrollHandler'
-8. 'clickHandler'
-9. 'dblClickHandler'
-10. 'dragHandler'
-11. 'dragEndHandler'
-12. 'keyHandler'
-13. 'focusHandler'
-14. 'blurHandler'
+4. 'nonPrimaryPressHandler' (OpenSeadragon v1.2.1+)
+5. 'releaseHandler'
+6. 'nonPrimaryReleaseHandler' (OpenSeadragon v1.2.1+)
+7. 'moveHandler'
+8. 'stopHandler'
+9. 'scrollHandler'
+10. 'clickHandler'
+11. 'dblClickHandler'
+12. 'dragHandler'
+13. 'dragEndHandler'
+14. 'pinchHandler'
+15. 'keyDownHandler'
+16. 'keyUpHandler'
+17. 'keyHandler'
+18. 'focusHandler'
+19. 'blurHandler'
 
 The hookHandler property of each hook definition should be the user-defined event handler callback.  All event handler callbacks have the following signature:
 
