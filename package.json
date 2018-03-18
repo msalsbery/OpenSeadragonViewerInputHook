@@ -1,7 +1,8 @@
-﻿{
+{
   "name": "OpenSeadragonViewerInputHook",
   "version": "1.1.0",
   "description": "OpenSeadragon plugin which provides hooks into the viewer input event pipeline.",
+  "main": "src/viewerinputhook.js",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-watch": "~0.5.3",
