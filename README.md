@@ -1,4 +1,4 @@
-##OpenSeadragonViewerInputHook
+## OpenSeadragonViewerInputHook
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/msalsbery/OpenSeadragonImaging?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 OpenSeadragonViewerInputHook is a plugin for [OpenSeadragon](https://github.com/openseadragon/openseadragon) 1.0.0+
@@ -7,7 +7,7 @@ overriding the default behavior.
 
 [See the Demo/Test Site Live](http://msalsbery.github.io/openseadragonimaginghelper/index.html)
 
-###Usage
+### Usage
 
 Download [openseadragon-viewerinputhook.min.js](http://msalsbery.github.io/builds/openseadragonimaging/openseadragon-viewerinputhook.min.js) (or the un-minified [openseadragon-viewerinputhook.js](http://msalsbery.github.io/builds/openseadragonimaging/openseadragon-viewerinputhook.js))
 
@@ -36,7 +36,7 @@ both methods take an options parameter where the event handlers to be hooked may
     var viewerInputHook = new OpenSeadragonImaging.ViewerInputHook({ viewer: existingviewer, hooks: [...] });
 ```
 
-###Details
+### Details
 
 Event handler callbacks are specified in the hooks property (array) of the options object passed when creating a ViewerInputHook object (see example code below).
 Any number of hooks can be specified.
@@ -110,16 +110,16 @@ Your hook event handler methods can control the event handling behavior in one o
     }
 ```
 
-###Demo/Test Site
+### Demo/Test Site
 
 The [OpenSeadragonImagingHelper plugin demo/test site](https://github.com/msalsbery/OpenSeadragonImagingHelper) uses 
 OpenSeadragonViewerInputHook to monitor cursor position and provide custom click and mousewheel event actions.
 
 The sample code is in [scripts/viewmodel.js](http://msalsbery.github.io/openseadragonimaginghelper/scripts/viewmodel.js).  
 
-###Notes
+### Notes
 
-###TODO...
+### TODO...
 
 
 1. jsdoc documentation
