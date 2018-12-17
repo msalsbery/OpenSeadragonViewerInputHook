@@ -1,4 +1,5 @@
 node_modules
+*.sublime-workspace
 build/
 docs/
 
@@ -63,7 +64,7 @@ _ReSharper*
 *.ncrunch*
 .*crunch*.local.xml
 
-# Installshield output folder 
+# Installshield output folder
 [Ee]xpress
 
 # DocProject is a documentation generator add-in
