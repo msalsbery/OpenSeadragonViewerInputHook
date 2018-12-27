@@ -6,11 +6,13 @@ OpenSeadragonViewerInputHook is a plugin for [OpenSeadragon](https://github.com/
 which provides hooks into the user input event pipeline for providing additional behavior and/or
 overriding the default behavior.
 
-[See the Demo/Test Site Live](http://msalsbery.github.io/openseadragonimaginghelper/index.html)
+[View the Documentation](http://msalsbery.github.io/openseadragon-imaging/docs/openseadragon-viewerinputhook/index.html)
+
+[See the OpenSeadragon Imaging Demo/Test Site Live](http://msalsbery.github.io/openseadragon-imaging/demo/index.html)
 
 ### Usage
 
-Download [openseadragon-viewerinputhook.min.js](http://msalsbery.github.io/builds/openseadragonimaging/openseadragon-viewerinputhook.min.js) (or the un-minified [openseadragon-viewerinputhook.js](http://msalsbery.github.io/builds/openseadragonimaging/openseadragon-viewerinputhook.js))
+Download [openseadragon-viewerinputhook.min.js](http://msalsbery.github.io/openseadragon-imaging/builds/openseadragon-viewerinputhook.min.js) (or the un-minified [openseadragon-viewerinputhook.js](http://msalsbery.github.io/openseadragon-imaging/builds/openseadragon-viewerinputhook.js))
 
 To use the plugin, add **openseadragon-viewerinputhook.min.js** after **openseadragon.min.js** to your site.
 
@@ -44,7 +46,7 @@ Any number of hooks can be specified.
 
 Each hook specification in the array should have three properties - tracker, handler, and hookHandler.
 
-The tracker property of each hook definition can be a reference to any [OpenSeadragon.MouseTracker](http://openseadragon.github.io/docs/OpenSeadragon.MouseTracker.html) instance, 
+The tracker property of each hook definition can be a reference to any [OpenSeadragon.MouseTracker](http://openseadragon.github.io/docs/OpenSeadragon.MouseTracker.html) instance,
 or one of the pre-defined OpenSeadragon viewer trackers - currently 'viewer' or 'viewer_outer'.
 
 The handler property of each hook definition specifies which MouseTracker handler to hook.
@@ -76,7 +78,7 @@ The hookHandler property of each hook definition should be the user-defined even
     handlerFunc(event)
 
 The ViewerInputHook class inserts your event hook handler methods in front of any existing event handler methods
-so the attached handler will be called first. Additional ViewerInputHook objects can be added on the same viewer/MouseTracker to create a chain of hook methods, 
+so the attached handler will be called first. Additional ViewerInputHook objects can be added on the same viewer/MouseTracker to create a chain of hook methods,
 where the last added handler(s) will be called first.
 
 Your hook event handler methods can control the event handling behavior in one or more of the following ways:
@@ -113,10 +115,10 @@ Your hook event handler methods can control the event handling behavior in one o
 
 ### Demo/Test Site
 
-The [OpenSeadragonImagingHelper plugin demo/test site](https://github.com/msalsbery/OpenSeadragonImagingHelper) uses 
+The [OpenSeadragon Imaging demo/test site](https://github.com/msalsbery/OpenSeadragonImaging) uses
 OpenSeadragonViewerInputHook to monitor cursor position and provide custom click and mousewheel event actions.
 
-The sample code is in [scripts/viewmodel.js](http://msalsbery.github.io/openseadragonimaginghelper/scripts/viewmodel.js).  
+The sample code is in [scripts/viewmodel.js](http://msalsbery.github.io/openseadragon-imaging/demo/scripts/viewmodel.js).
 
 ### Notes
 
